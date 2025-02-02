@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reply Generator</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      margin: 20px;
+
+      background-color: #f4f4f9;
+
+      color: #333;
+
+    }
+
+    h1 {
+
+      color: #4CAF50;
+
+    }
+
+    .container {
+
+      max-width: 600px;
+
+      margin: 0 auto;
+
+      background: #fff;
+
+      padding: 20px;
+
+      border-radius: 8px;
+
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    }
+
+    label {
+
+      display: block;
+
+      margin: 10px 0 5px;
+
+      font-weight: bold;
+
+    }
+
+    input[type="text"] {
+
+      width: 100%;
+
+      padding: 8px;
+
+      margin-bottom: 10px;
+
+      border: 1px solid #ccc;
+
+      border-radius: 4px;
+
+    }
+
+    textarea {
+
+      width: 100%;
+
+      height: 150px;
+
+      padding: 8px;
+
+      border: 1px solid #ccc;
+
+      border-radius: 4px;
+
+      resize: none;
+
+    }
+
+    button {
+
+      margin-top: 10px;
+
+      padding: 10px 20px;
+
+      background-color: #4CAF50;
+
+      color: white;
+
+      border: none;
+
+      border-radius: 4px;
+
+      cursor: pointer;
+
+    }
+
+    button:hover {
+
+      background-color: #45a049;
+
+    }
+
+    .output {
+
+      margin-top: 20px;
+
+      padding: 10px;
+
+      background-color: #e9f7ef;
+
+      border: 1px solid #4CAF50;
+
+      border-radius: 4px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Reply Generator</h1>
+
+    <form id="templateForm">
+
+      <label for="partnerName">Partner Name:</label>
+
+      <input type="text" id="partnerName" placeholder="Enter Partner Name" required>
+
+
+
+      <label for="profileLink">Profile Link:</label>
+
+      <input type="text" id="profileLink" placeholder="Enter Profile Link" required>
+
+
+
+      <label for="leadEmail">Lead Delivery Email:</label>
+
+      <input type="text" id="leadEmail" placeholder="Enter Lead Delivery Email" required>
+
+
+
+      <label for="googleDriveLink">Google Drive Link:</label>
+
+      <input type="text" id="googleDriveLink" placeholder="Enter Google Drive Link" required>
+
+
+
+      <label for="partnerEmail">Partner Account Email:</label>
+
+      <input type="text" id="partnerEmail" placeholder="Enter Partner Account Email" required>
+
+
+
+      <label for="username">Username:</label>
+
+      <input type="text" id="username" placeholder="Enter Username" required>
+
+
+
+      <button type="button" onclick="generateTemplate()">Generate Template</button>
+
+    </form>
+
+
+
+    <div class="output">
+
+      <h3>Generated Template:</h3>
+
+      <textarea id="generatedTemplate" readonly></textarea>
+
+      <button onclick="copyToClipboard()">Copy to Clipboard</button>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    function generateTemplate() {
+
+      const partnerName = document.getElementById('partnerName').value;
+
+      const profileLink = document.getElementById('profileLink').value;
+
+      const leadEmail = document.getElementById('leadEmail').value;
+
+      const googleDriveLink = document.getElementById('googleDriveLink').value;
+
+      const partnerEmail = document.getElementById('partnerEmail').value;
+
+      const username = document.getElementById('username').value;
+
+
+
+      const template = `Hi,
+
+${partnerName} is now set up as a partner in Boberdoo.
+
+${profileLink}
+
+
+
+Test Lead Sent to Partner’s Email Distribution:
+
+${leadEmail}
+
+Signed PDF & Other files (if any) uploaded to Partner Folder in Google Drive:
+
+${googleDriveLink}
+
+
+
+Portal Invitation Email Sent to:
+
+${partnerEmail}
+
+
+
+Boberdoo Credentials:
+
+Username: ${username}
+
+Password: To be set by user`;
+
+
+
+      document.getElementById('generatedTemplate').value = template;
+
+    }
+
+
+
+    function copyToClipboard() {
+
+      const templateText = document.getElementById('generatedTemplate');
+
+      templateText.select();
+
+      document.execCommand('copy');
+
+      alert('Template copied to clipboard!');
+
+    }
+
+  </script>
+
+</body>
+
+</html>
